@@ -9,3 +9,4 @@ Captures
 ========================
 
 ![Alt text](/images/form connection page.png?raw=true "Formulaire d'authentification")
+![Alt text](/images/home user.png?raw=true "Page d'accueil de l'utilisateur")
