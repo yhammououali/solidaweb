@@ -8,9 +8,9 @@ Notre idée est de profiter de la géolocalisation qu’offrent les appareils mo
 Captures
 ========================
 
-![Alt text](/images/form connection page.png?raw=true "Formulaire d'authentification")
-![Alt text](/images/create account page.png?raw=true "Page d'inscription")
-![Alt text](/images/home user.png?raw=true "Page d'accueil de l'utilisateur")
-![Alt text](/images/deposit page.png?raw=true "Déposer une demande d'aide")
-![Alt text](/images/user informations page.png?raw=true "Page d'informations d'un utilisateur")
-![Alt text](/images/contact page.png?raw=true "Page de contact")
+![Alt text](/images/form connection page.png =500x300?raw=true "Formulaire d'authentification")
+![Alt text](/images/create account page.png =500x300?raw=true "Page d'inscription")
+![Alt text](/images/home user.png =500x300?raw=true "Page d'accueil de l'utilisateur")
+![Alt text](/images/deposit page.png =500x300?raw=true "Déposer une demande d'aide")
+![Alt text](/images/user informations page.png =500x300?raw=true "Page d'informations d'un utilisateur")
+![Alt text](/images/contact page.png =500x300?raw=true "Page de contact")
