@@ -1,0 +1,141 @@
+html {
+	overflow: -moz-scrollbars-vertical;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+
+body {
+	padding-top: 70px;
+	padding-bottom: 30px;
+	/*background:#bcced8 url('../images/bgPage.jpg') no-repeat top right;*/
+    background: url('../images/bgPage.jpg') repeat scroll 0% 0% transparent;
+    font: 13px/1.25 "Trebuchet MS",Arial,sans-serif;
+    color: #4A5666;
+}
+
+h1 {
+    font-weight: normal;
+    letter-spacing: -1px;
+    color: #369;
+}
+
+h2 {
+    font-size: 28px;
+    color: #369;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 0px 0px 15px;
+    padding: 0px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #FF9100;
+}
+
+.theme-dropdown .dropdown-menu {
+	position: static;
+	display: block;
+	margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+	margin: 5px 0;
+}
+
+.main-content {
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+	background: #FFFFFF;
+	border-radius: 4px;
+}
+
+.first-box {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.page-start {
+	padding-bottom: 9px;
+	margin: 0 0 20px;
+	border-bottom: 1px solid #eee;
+}
+
+footer {
+	margin: 20px auto;
+}
+
+.navbar-brand {
+	float: left;
+	font-size: 18px;
+	line-height: 20px;
+	/*height: 50px;*/
+}
+
+.navbar-default .navbar-nav > li > a:hover, .nav > li > a:focus {
+	text-decoration: none;
+	background-color: #F1F9FC;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+.cadregris {
+	background-color: #F9F9F9;
+	padding: 0px 19px 19px 19px;
+	margin-bottom: 20px;
+	border: 1px solid #DFDFDF;
+	border-radius: 4px;
+    min-height: 351px;
+}
+
+.cadregris_account {
+	background-color: #F9F9F9;
+	padding: 19px 19px 19px 19px;
+	margin-bottom: 20px;
+	border: 1px solid #DFDFDF;
+	border-radius: 4px;
+    min-height: 215px;
+}
+
+.cadrebleu {
+    background-color: #428BCA;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 3px;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.search-box {
+	background-color: #F8FCFD;
+	padding: 19px;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+.spacer {
+    height: 15px;
+}
+
+.label-remember {
+    color : #666;
+}
+
+td a {
+    display: block;
+    height: 100%;
+}

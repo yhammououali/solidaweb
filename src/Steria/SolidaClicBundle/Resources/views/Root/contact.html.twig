@@ -1,0 +1,84 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}{% trans %}Contactez-nous{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-content">
+    <div class="spacer"></div>
+	<div class="cadregris">
+        <h2>{% trans %}Une question ?{% endtrans %}</h2>
+        <p>{% trans %}N'hésitez pas à nous contacter en spécifiant au mieux votre demande afin que nous puissions vous répondre le plus précisément possible.{% endtrans %}</p>
+        <p>{% trans %}Nous vous invitons à consulter notre FAQ avant toute demande de contact afin d'obtenir une réponse immédiate. Vous y retrouverez les réponses aux questions les plus fréquentes.{% endtrans %}
+        </p>
+        <br>
+		<form name="steria_solidaclic_support" method="post" action="" class="form" role="form">
+{% if sended %}
+    <div class="alert alert-success">
+        {% trans %}Votre message à bien été envoyé.{% endtrans %}<br/>
+        {% trans %}Merci pour votre confiance!{% endtrans %}
+    </div>
+{% endif %}
+			<div class="row">
+				<div class="col-md-12">
+					<label for="inpSubject">{% trans %}Choisissez le sujet de votre question :{% endtrans %}</label>
+					<select class="form-control" name="inpSubject">
+                        <option><< Veuillez choisir une option >></option>
+						<option>Je n'arrive pas à déposer mon annonce sur le site</option>
+                        <option>Je souhaite signaler une annonce</option>
+						<option>Je souhaite signaler un membre</option>
+                        <option>Mon compte est bloqué</option>
+                        <option>J'ai oublié mon identifiant</option>
+						<option>Je rencontre un problème technique</option>
+						<option>Je souhaite supprimer mon compte SolidaClic</option>
+						<option>J'ai reçu un email ou SMS suspect</option>
+                        <option>Je souhaite vous faire part d'un bug</option>
+                        <option>Je souhaite nouer un partenariat</option>
+                        <option>Autres</option>
+					</select>
+					<hr/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+                    <div class="form-group">
+						<label for="inpDemande">{% trans %}N°de demande :{% endtrans %}</label> <small>(facultatif)</small>
+						<input type="number" class="form-control" name="inpDemande" id="inpDemande" placeholder="{% trans %}Numero de demande{% endtrans %}">
+					</div>
+					<div class="form-group">
+						<label for="inpNom">{% trans %}Votre nom :{% endtrans %}</label>
+						<input type="text" class="form-control" name="inpNom" id="inpNom" placeholder="{% trans %}Nom{% endtrans %}">
+					</div>
+					<div class="form-group">
+						<label for="inpEmail">{% trans %}Votre e-mail :{% endtrans %}</label>
+						<input type="email" class="form-control" name="inpEmail" id="inpEmail" placeholder="{% trans %}Email{% endtrans %}">
+					</div>
+					<div class="form-group">
+						<label for="inpPhone">{% trans %}Votre téléphone :{% endtrans %}</label>
+						<input type="text" class="form-control" name="inpPhone" id="inpPhone" placeholder="{% trans %}Téléphone{% endtrans %}">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="inpMessage">{% trans %}Votre message :{% endtrans %}</label>
+						<textarea class="form-control" name="inpMessage" id="inpMessage" rows="11"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr />
+					<div class="pull-right">
+						<a href="javascript:void(0)" onclick="javascript:history.go(-1);" class="btn btn-default" role="button">
+                            {% trans %}Retour{% endtrans %}
+                        </a>
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-ok"></span> {% trans %}Envoyer{% endtrans %}
+						</button>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

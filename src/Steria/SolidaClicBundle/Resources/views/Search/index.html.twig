@@ -1,0 +1,103 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}{% trans %}Affichage des annonces{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="first-box">
+	<div class="search-box">
+        <form method="post" action="" class="form" role="form">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <label for="inpCateg">{% trans %}Affichage des demandes{% endtrans %}</label>
+                        <select name="inpCateg" class="form-control">
+                            <option value="0">-- Toutes --</option>
+{% for cat in catvalues %}
+                            <option value="{{ cat.id }}"{{ frmcat == cat.id ? ' selected="selected"' : '' }}>{{ cat.description|trans }}</option>
+{% endfor %}
+                            </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="inpDist">{% trans %}Distance{% endtrans %}</label>
+                        <select name="inpDist" class="form-control">
+                            <option value="0">-- Toutes --</option>
+                            <option value="1"{{ frmdst == 1 ? ' selected="selected"' : '' }}>1 km</option>
+                            <option value="5"{{ frmdst == 5 ? ' selected="selected"' : '' }}>5 km</option>
+                            <option value="10"{{ frmdst == 10 ? ' selected="selected"' : '' }}>10 km</option>
+                            <option value="15"{{ frmdst == 15 ? ' selected="selected"' : '' }}>15 km</option>
+                            <option value="20"{{ frmdst == 20 ? ' selected="selected"' : '' }}>20 km</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="inpZip">{% trans %}Code postal{% endtrans %}</label>
+                        <input type="number" class="form-control" id="inpZip" name="inpZip" placeholder="{% trans %}Code postal{% endtrans %}" value="{{ frmzip is empty ? "" : frmzip }}" required="required" />
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <br/>
+                    <button type="submit" class="btn btn-primary">{% trans %}GO !{% endtrans %}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="page-content">
+{% if frmerr is not empty %}
+    <div class="alert alert-warning">
+        {{ frmerr }}
+    </div>
+{% endif %}
+	<h2>{% trans with {'%nb%':help_cnt} %}%nb% Résultats trouvés{% endtrans %}</h2>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>{% trans %}Titre{% endtrans %}</th>
+				<th>{% trans %}Code postal{% endtrans %}</th>
+				<th>{% trans %}Distance{% endtrans %}</th>
+			</tr>
+		</thead>
+		<tbody>
+
+{% for demande in demandes %}
+    {% set lademande = demande[0] %}
+			<tr>
+				<td><a href="{{ path('steria_solidaclic_search_view', {'id':lademande.id}) }}">{{ lademande.title }}</a></td>
+				<td><a href="{{ path('steria_solidaclic_search_view', {'id':lademande.id}) }}">{{ lademande.zip }}</a></td>
+				<td><a href="{{ path('steria_solidaclic_search_view', {'id':lademande.id}) }}">{{ demande['dst'] >= 0 ? demande['dst']|number_format(0) ~ " km" : "Indéterminé"|trans }}</a></td>
+			</tr>
+{% endfor %}
+		</tbody>
+	</table>
+
+	<br />
+	<div class="text-center">
+		<ul class="pagination pagination-lg">
+{% if page > 1 %}
+			<li><a href="#">« {% trans %}Précédent{% endtrans %}</a></li>
+{% else %}
+			<li class="disabled"><a href="#">« {% trans %}Précédent{% endtrans %}</a></li>
+{% endif %}
+{% if pages_count > 1 %}
+	{% for p in range(max(page-4, 1),min(page+4, pages_count)) %}
+		{% if frmdst is empty %}
+			<li{% if p == page %} class="active"{% endif %}><a href="{{ path('steria_solidaclic_search_indexpart', {'page':p}) }}">{{ p }}</a></li>
+		{% else %}
+			<li{% if p == page %} class="active"{% endif %}><a href="{{ path('steria_solidaclic_search_indexfull', {'page':p,'rub':frmcat is empty ? "0":frmcat,'dist':frmdst is empty ? "0":frmdst,'zip':frmzip is empty ? "0":frmzip}) }}">{{ p }}</a></li>
+		{% endif %}
+	{% endfor %}
+{% else %}
+			<li class="active"><a href="{{ path('steria_solidaclic_search_indexpart', {'page':1}) }}">1</a></li>
+{% endif %}
+{% if page < pages_count %}
+			<li><a href="#">{% trans %}Suivant{% endtrans %} »</a></li>
+{% else %}
+			<li class="disabled"><a href="#">{% trans %}Suivant{% endtrans %} »</a></li>
+{% endif %}
+		</ul>
+	</div>
+</div>
+{% endblock %}

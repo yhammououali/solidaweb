@@ -1,0 +1,13 @@
+parameters:
+#    steria_solida_clic.example.class: Steria\SolidaClicBundle\Example
+
+services:
+#    steria_solida_clic.example:
+#        class: %steria_solida_clic.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    steria_solida_clic.googlemap:
+        class: Steria\SolidaClicBundle\Service\GoogleMap
+        arguments: [ ]
+    steria_solida_clic.googlecloudmessage:
+        class: Steria\SolidaClicBundle\Service\GoogleCloudMessage
+        arguments: [ ]

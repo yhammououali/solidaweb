@@ -1,0 +1,21 @@
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/vendor/
+/app/config/parameters.yml
+/bin/
+composer.lock
+
+# OTHER
+*.log
+*.php~
+
+# OS SPECIFIC
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

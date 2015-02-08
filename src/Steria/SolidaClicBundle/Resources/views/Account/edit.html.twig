@@ -1,0 +1,93 @@
+{% extends 'SteriaSolidaClicBundle::pageaccount.html.twig' %}
+
+{% block accounttitle %}{% trans %}Mes informations{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Mes informations{% endtrans %}</h1>
+</div>
+
+<div class="page-content">
+    <p>{% trans %}Pour modifier un champ grisé, merci de prendre contact avec notre assistance.{% endtrans %}</p>
+    <br />
+    <div class="cadregris_account">
+{% for type in ['info', 'success', 'error', 'danger'] %}
+    {% for message in app.session.flashbag.get(type) %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+        <div class="form">
+            <div class="form-group">
+                <label for="dummyUsername">{% trans %}Votre pseudo :{% endtrans %}</label>
+                <input type="text" class="form-control" id="dummyUsername" value="{{ user.username }}" disabled="disabled">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="dummyLastname">{% trans %}Nom :{% endtrans %}</label>
+                        <input type="text" class="form-control" id="dummyLastname" value="{{ user.lastname }}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="dummyFirstname">{% trans %}Prénom :{% endtrans %}</label>
+                        <input type="text" class="form-control" id="dummyFirstname" value="{{ user.firstname }}" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="dummyGender">{% trans %}Sexe :{% endtrans %}</label>
+                        <input type="text" class="form-control" id="dummyGender" value="{{ user.fullygender }}" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="dummyBirthday">{% trans %}Date de naissance :{% endtrans %}</label>
+                        <input type="text" class="form-control" id="dummyBirthday" value="{{ user.birthdate is empty ? "Non défini"|trans : user.birthdate|date("d/m/Y") }}" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form name="steria_solidaclic_editaccount" method="post" action="" class="form" role="form">
+            <hr/>
+            <div class="form-group">
+                <label for="inpEmail">{% trans %}Adresse e-mail :{% endtrans %}</label>
+                <input type="email" class="form-control" id="inpEmail" name="inpEmail" placeholder="Enter email" value="{{ user.email }}">
+            </div>
+            <hr/>
+            <div class="form-group">
+                <label for="inpPasswdNew1">{% trans %}Nouveau mot de passe :{% endtrans %}</label>
+                <input type="password" class="form-control" id="inpPasswdNew1" name="inpPasswdNew1" placeholder="{% trans %}Mot de passe{% endtrans %}">
+            </div>
+            <div class="form-group">
+                <label for="inpPasswdNew2">{% trans %}Vérification :{% endtrans %}</label><p>test</p>
+                <input type="password" class="form-control" id="inpPasswdNew2" name="inpPasswdNew2" placeholder="{% trans %}Mot de passe{% endtrans %}">
+            </div>
+            <div class="form-group">
+                <label for="inpPasswdOld">{% trans %}Ancien mot de passe :{% endtrans %}</label>
+                <input type="password" class="form-control" id="inpPasswdOld" name="inpPasswdOld" placeholder="{% trans %}Mot de passe{% endtrans %}">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="text-center">
+                        <button type="reset" class="btn btn-default">
+                            <span class="glyphicon glyphicon-import"></span> {% trans %}Réinitaliser les champs{% endtrans %}
+                        </button>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-center">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> {% trans %}Sauvegarder{% endtrans %}
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+parameters:
+#    steria_solida_user.example.class: Steria\SolidaUserBundle\Example
+
+services:
+#    steria_solida_user.example:
+#        class: %steria_solida_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    steria_solida_user.registration.form.type:
+        class: Steria\SolidaUserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: steria_fosextend_registration }

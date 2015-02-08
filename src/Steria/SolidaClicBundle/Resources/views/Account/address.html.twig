@@ -1,0 +1,65 @@
+{% extends 'SteriaSolidaClicBundle::pageaccount.html.twig' %}
+
+{% block accounttitle %}{% trans %}Mes adresses{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Mes adresses{% endtrans %}</h1>
+</div>
+
+<div class="page-content">
+	<p>{% trans %}Adresses enregistrées :{% endtrans %}</p>
+	<div class="row">
+{% for thisaddress in alladdress %}
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<address>
+						<strong>{{ thisaddress.placename }}</strong><br>
+						{{ thisaddress.address }}<br>
+						{{ thisaddress.city }}, {{ thisaddress.zip }}
+					</address>
+					<p>
+						<a href="{{ path('steria_solidaclic_account_addressedit', {'addrid':thisaddress.id}) }}" class="btn btn-primary" role="button">{% trans %}Editer{% endtrans %}</a>
+						<a href="{{ path('steria_solidaclic_account_addressdelete', {'addrid':thisaddress.id}) }}" class="btn btn-default" role="button">{% trans %}Supprimer{% endtrans %}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+{% else %}
+		<div class="col-md-12">
+			<div class="alert alert-warning">
+				<p>{% trans %}Pas d'adresses enregistrées...{% endtrans %}</p>
+			</div>
+        </div>
+{% endfor %}
+	</div>
+</div>
+
+<div class="page-start">
+    <h2>{% trans %}Completer{% endtrans %}</h2>
+</div>
+
+<div class="page-content">
+	<p>Editer ou ajouter une adresse.</p>
+	<br />
+	<div class="cadregris_account">
+{% for type in ['info', 'success', 'error', 'danger'] %}
+    {% for message in app.session.flashbag.get(type) %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+	{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_rest(form) }}
+    <button type="submit" id="_submit" name="_submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span> {% trans %}Ajouter une adresse{% endtrans %}
+	</button>
+{{ form_end(form) }}
+	
+	</div>
+</div>
+{% endblock %}

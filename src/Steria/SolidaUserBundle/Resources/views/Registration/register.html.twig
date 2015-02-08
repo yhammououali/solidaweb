@@ -1,0 +1,113 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}{% trans %}Inscription{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-content">
+    <div class="page-start">
+        <h1>Créer un compte SolidaClic</h1>
+    </div>
+    <h3>{% trans %}Devenez membre de SolidaClic et rejoignez notre communauté !{% endtrans %}</h3>
+    <br>
+	<div class="cadregris_account">
+		<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+			 <div class="row">
+                <div class="col-md-3">
+                    <p class="cadrebleu">
+                        compte
+                    </p>
+                </div>
+            </div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-1">
+                    <div class="form-group">
+                        {{ form_label(form.username, 'Votre pseudo :'|trans) }}
+                        {{ form_widget(form.username) }}
+                        {{ form_errors(form.username) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="cadrebleu">
+                        mot de passe
+                    </p>
+                </div>
+            </div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-1">
+                    <div class="form-group">
+                        {{ form_label(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+					<div class="form-group">
+                        {{ form_label(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second) }}
+                        {{ form_errors(form.plainPassword.second) }}
+                    </div>
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="cadrebleu">
+                        informations personnelles
+                    </p>
+                </div>
+            </div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-1">
+					<div class="form-group">
+						{{ form_label(form.gender) }}
+						{{ form_widget(form.gender) }}
+						{{ form_errors(form.gender) }}
+					</div>
+					<div class="form-group">
+						{{ form_label(form.lastname) }}
+						{{ form_widget(form.lastname) }}
+						{{ form_errors(form.lastname) }}
+					</div>
+					<div class="form-group">
+						{{ form_label(form.firstname) }}
+						{{ form_widget(form.firstname) }}
+						{{ form_errors(form.firstname) }}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-1">
+					{{ form_label(form.birthdate) }}
+					<div class="form-inline">
+						{{ form_widget(form.birthdate) }}
+					</div>
+					{{ form_errors(form.birthdate) }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-11 col-md-offset-1">
+					{{ form_rest(form) }}
+				</div>
+			</div>
+            <div class="row">
+				<div class="col-md-12">
+					<hr />
+					<div class="pull-right">
+				        <a href="javascript:void(0)" onclick="javascript:history.go(-1);" class="btn btn-default" role="button">
+					       <span class="glyphicon glyphicon-arrow-left"></span> {% trans %}Retour{% endtrans %}
+                        </a>
+				        <button type="submit" id="_submit" name="_submit" class="btn btn-primary">
+					       <span class="glyphicon glyphicon-pencil"></span> {% trans %}S'enregistrer{% endtrans %}
+				        </button>
+				    </div>
+                    <div class="clearfix"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

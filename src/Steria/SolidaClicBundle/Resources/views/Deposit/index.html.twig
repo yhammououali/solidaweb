@@ -1,0 +1,112 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}Déposer une demande{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Déposer une demande{% endtrans %}</h1>
+</div>
+
+<div class="page-content">
+	<h3>{% trans %}SolidaClic est le site idéal pour demander de l'aide pour la réalisation d'une tâche.{% endtrans %}</h3>
+	<br/>
+	<div class="cadregris_account">
+{% if sended %}
+        <div class="alert alert-success">
+            {% trans %}Votre demande est maintenant en ligne.{% endtrans %}<br/>
+            {% trans with {'%url%':path('steria_solidaclic_account_request')} %}Cliquez <a href="%url%">ici</a> pour vous rendre consulter vos demandes.{% endtrans %}
+        </div>
+{% endif %}
+{% for type in ['info', 'success', 'error', 'danger'] %}
+    {% for message in app.session.flashbag.get(type) %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+		<form method="post" action="" class="form" role="form">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="cadrebleu">
+                        catégorie
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <label for="inpCateg">{% trans %}Catégorie de la demande :{% endtrans %}</label>
+                        <select name="inpCateg" class="form-control">
+{% for cat in catvalues %}
+                            <option value="{{ cat.id }}">{{ cat.description|trans }}</option>
+{% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="cadrebleu">
+                        votre demande
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        {{ form_label(form.title, 'Titre de la demande :'|trans) }}
+                        {{ form_widget(form.title) }}
+                        {{ form_errors(form.title) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.description, 'Description de la demande :'|trans) }}
+                        {{ form_widget(form.description, {'attr': {'rows': '7'}}) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="cadrebleu">
+                        Localisation
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        {{ form_label(form.address, 'Adresse :'|trans) }}
+                        {{ form_widget(form.address) }}
+                        {{ form_errors(form.address) }}
+                    </div>                    
+                    <div class="form-group">
+                        {{ form_label(form.city, 'Ville :'|trans) }}
+                        {{ form_widget(form.city) }}
+                        {{ form_errors(form.city) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.zip, 'Code postal :'|trans) }}
+                        {{ form_widget(form.zip) }}
+                        {{ form_errors(form.zip) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-11 col-md-offset-1">
+					{{ form_rest(form) }}
+				</div>
+			</div>
+            <hr>
+            <div class="pull-right">
+				<a href="javascript:void(0)" onclick="javascript:history.go(-1);" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-arrow-left"></span> {% trans %}Retour{% endtrans %}
+				</a>
+				<button type="submit" id="_submit" name="_submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-pencil"></span> {% trans %}Envoyer votre demande{% endtrans %}
+				</button>
+			</div>
+            <div class="clearfix"></div>
+		</form>
+	</div>
+</div>
+{% endblock %}

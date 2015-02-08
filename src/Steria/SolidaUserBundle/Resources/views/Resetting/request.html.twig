@@ -1,0 +1,41 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}{% trans %}Mot de passe égaré{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Mot de passe égaré{% endtrans %}</h1>
+</div>
+<div class="page-content">
+    <p>{% trans %}Entrez votre pseudo et cliquez sur le bouton envoyer. Nous vous enverrons un Email automatique avec votre code de confirmation.{% endtrans %}</p>
+
+    <div class="cadrebleuciel">
+{% if invalid_username is defined %}
+		<div class="bs-message">
+			<div class="alert alert-danger fade in">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<p>{% trans %}Le nom d'utilisateur ou l'adresse e-mail n'existe pas dans notre base de donnée.{% endtrans %}</p>
+			</div>
+		</div>
+{% endif %}
+		<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="username" class="col-sm-3 control-label">{% trans %}Nom d'utilisateur ou Email :{% endtrans %}</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="username" name="username" required="required" placeholder="{% trans %}Email ou nom d'utilisateur{% endtrans %}">
+				</div>
+			</div>
+			<p class="text-center">
+				<a href="javascript:void(0)" onclick="javascript:history.go(-1);" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-arrow-left"></span> {% trans %}Retour{% endtrans %}
+				</a>
+				<button type="submit" id="_submit" name="_submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-retweet"></span> {% trans %}Récuperer mon mot de passe{% endtrans %}
+				</button>
+			</p>
+			<div class="clearfix"></div>
+		</form>
+	</div>
+
+</div>
+{% endblock %}

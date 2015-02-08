@@ -1,0 +1,13 @@
+{% extends 'SteriaSolidaClicBundle::pageaccount.html.twig' %}
+
+{% block title %}{% trans %}Espace membre{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Tableau de bord{% endtrans %}</h1>
+</div>
+
+<div class="page-content">
+Hello {{ user.username }} !<br>
+</div>
+{% endblock %}

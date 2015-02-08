@@ -1,0 +1,14 @@
+{% extends 'SteriaSolidaClicBundle::page2col.html.twig' %}
+
+{% block title %}{% trans %}Espace membre{% endtrans %} - {% block accounttitle %}{% endblock %}{% endblock %}
+
+{% block sidebar %}
+<br>
+<div class="cadregris_account">
+<p class="text-center">NAVIGATION</p>
+{% include 'SteriaSolidaClicBundle:Account:_menu.html.twig' %}
+</div>
+{% endblock %}
+
+{% block page %}
+{% endblock %}

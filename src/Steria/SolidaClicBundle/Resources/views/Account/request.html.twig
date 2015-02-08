@@ -1,0 +1,33 @@
+{% extends 'SteriaSolidaClicBundle::pageaccount.html.twig' %}
+
+{% block accounttitle %}{% trans %}Mes demandes{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Mes demandes{% endtrans %}</h1>
+</div>
+
+<div class="page-content">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>{% trans %}Titre{% endtrans %}</th>
+				<th>{% trans %}Action{% endtrans %}</th>
+			</tr>
+		</thead>
+		<tbody>
+
+{% for demande in allrequests %}
+			<tr>
+				<td><a href="{{ path('steria_solidaclic_search_view', {'id':demande.id}) }}">{{ demande.title }}</a></td>
+    {% if demande.solved is not null %}
+				<td><a href="{{ path('steria_solidaclic_search_view', {'id':demande.id}) }}">{% trans %}Demande résolue{% endtrans %}</a></td>
+    {% else %}
+				<td><a href="{{ path('steria_solidaclic_search_view', {'id':demande.id}) }}" target="_blank" class="btn btn-default" role="button">{% trans %}Voir{% endtrans %}</a> <a href="{{ path('steria_solidaclic_account_requestdelete', {'id':demande.id}) }}" class="btn btn-success" role="button">{% trans %}Désactiver{% endtrans %}</a></td>
+    {% endif %}
+                </tr>
+{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

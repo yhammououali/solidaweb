@@ -1,0 +1,22 @@
+{% extends 'SteriaSolidaClicBundle::global.html.twig' %}
+
+{% block ourbody %}
+
+<div class="container main-content">
+	<div class="row">
+		<div class="col-md-9 col-md-push-3" role="main">
+<!-- start page -->
+{% block page %}
+{% endblock %}
+<!-- end page -->
+		</div>
+		<div class="col-md-3 col-md-pull-9" role="navigation">
+<!-- start sidebar -->
+{% block sidebar %}
+{% endblock %}
+<!-- end sidebar -->
+		</div>
+	</div>
+</div>
+
+{% endblock %}

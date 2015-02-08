@@ -1,0 +1,15 @@
+{% set thisRoute = app.request.attributes.get('_route') %}
+{%
+set items = {
+	'steria_solidaclic_account_index'	: 'Tableau de bord',
+	'steria_solidaclic_account_edit'	: 'Mes informations',
+	'steria_solidaclic_account_address'	: 'Mes adresses',
+    'steria_solidaclic_account_request'	: 'Mes demandes',
+	'fos_user_security_logout'	: 'Se déconnecter' }
+%}
+
+<ul class="nav nav-pills nav-stacked">
+{% for menuRoute, menuName in items %}
+	<li{% if menuRoute == thisRoute %} class="active"{% endif %}><a href="{{ path(menuRoute) }}">{{ menuName|trans }}</a></li>
+{% endfor %}
+</ul>

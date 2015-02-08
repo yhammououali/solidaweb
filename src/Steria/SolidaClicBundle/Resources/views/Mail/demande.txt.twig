@@ -1,0 +1,20 @@
+{% trans %}Une nouvelle demande est disponible !{% endtrans %}
+
+{% trans %}Description de la demande :{% endtrans %}
+
+{{ fulldemande.description }}
+
+{% trans %}A l'adresse suivante :{% endtrans %}
+
+{{ fulldemande.address }}
+{{ fulldemande.city }}, {{ fulldemande.zip }}
+
+{% trans with {'%pseudo%':fulldemande.fkuser.username,'%date%':fulldemande.createdat|date("m/d/y")} %}Posté par %pseudo% le %date%.{% endtrans %}
+
+{% trans %}Voir les détails ici :{% endtrans %} {{ path('steria_solidaclic_search_view', {'id':fulldemande.id}) }}
+
+{% trans %}Votre adresse qui à levé la notification est :{% endtrans %}
+
+{{ address.placename }}
+{{ address.address }}
+{{ address.city }}, {{ address.zip }}

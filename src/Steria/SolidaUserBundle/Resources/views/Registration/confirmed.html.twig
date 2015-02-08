@@ -1,0 +1,32 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}{% trans %}Inscription{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-start">
+    <h1>{% trans %}Inscription{% endtrans %}</h1>
+</div>
+<div class="page-content">
+	<p>{% trans with {'%username%': user.username} %}Félicitations %username%, votre compte est maintenant activé !{% endtrans %}</p>
+	<p>{% trans %}Remarque: Nous ne vendons, ni ne communiquons vos informations personnelles à autrui.{% endtrans %}</p>
+	<br/>
+	<p>
+{% if app.session is not empty %}
+	{% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+	{% if targetUrl is not empty %}
+		<a href="{{ targetUrl }}" class="btn btn-primary" role="button">
+			{% trans %}Continuer{% endtrans %} <span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	{% else %}
+		<a href="{{ path('steria_solidaclic_account_index') }}" class="btn btn-primary" role="button">
+			<span class="glyphicon glyphicon-log-in"></span> {% trans %}Acceder à l'espace membre{% endtrans %}
+		</a>
+	{% endif %}
+{% else %}
+		<a href="{{ path('steria_solidaclic_account_index') }}" class="btn btn-primary" role="button">
+			<span class="glyphicon glyphicon-log-in"></span> {% trans %}Acceder à l'espace membre{% endtrans %}
+		</a>
+{% endif %}
+	</p>
+</div>
+{% endblock %}

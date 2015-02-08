@@ -1,0 +1,77 @@
+{% extends 'SteriaSolidaClicBundle::page.html.twig' %}
+
+{% block title %}{% trans %}Détail{% endtrans %}{% endblock %}
+
+{% block page %}
+<div class="page-content">
+    <div class="page-start">
+        <h1>Affichage demande d'aide</h1>
+    </div>
+	<div class="cadregris_account">
+        <h2>{{ helprequest.title }}</h2>
+        <p class="help_author">Mise en ligne par {{ helprequest.fkUser.username }}</p>
+        <div class="spacer"></div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <p class="cadrebleu">
+                    Informations
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <p class="help_description">{{ helprequest.description|nl2br }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <p class="cadrebleu">
+                    Informations de la demande
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <td class="help_label">Ville :</td>
+                            <td class="help_reponse">{{ helprequest.city }}</td>
+                        </tr>
+                        <tr>
+                            <td class="help_label">Code Postal :</td>
+                            <td class="help_reponse">{{ helprequest.zip }}</td>
+                        </tr>
+                    </table>        
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <p class="cadrebleu">
+                    Localisation
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    Mettre le Google Map ici !
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="pull-right">
+            <a href="javascript:void(0)" onclick="javascript:history.go(-1);" class="btn btn-default" role="button">
+				<span class="glyphicon glyphicon-arrow-left"></span> {% trans %}Retour{% endtrans %}
+            </a>
+            <button type="submit" class="btn btn-primary" onClick="window.location.href='mailto:{{ helprequest.fkUser.email }}';">
+				<span class="glyphicon glyphicon-envelope"></span> {% trans %}Contacter par mail{% endtrans %}
+            </button>
+        </div>
+        <div class="clearfix"></div>
+	</div>
+</div>
+{% endblock %}

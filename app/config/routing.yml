@@ -1,0 +1,9 @@
+steria_solida_user:
+    resource: "@SteriaSolidaUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+steria_solida_clic:
+    resource: "@SteriaSolidaClicBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
